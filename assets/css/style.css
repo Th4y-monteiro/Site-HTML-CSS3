@@ -1,0 +1,448 @@
+:root{
+    --primary-color:#070431;
+    --white-color:#FFFBF8;
+    --gap:3rem;
+    --ligth-line-color:#EEEE;
+    --secundary-color:crimson;
+
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+/*font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  alt+z - para quebrar a linha
+*/
+
+/*Elementos*/
+html{
+    font-size: 62.5%; /*Para poder usar o rem como unidade de medida*/
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    line-height: 1.5;/*espaçamento das linhas*/
+
+    
+}
+   
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Montserrat', sans-serif;
+}
+h1{
+    text-transform: uppercase;
+    font-size: 6rem;
+}
+
+h2{
+    font-size: 6rem;
+    margin-bottom: 5rem;
+    text-transform: uppercase;
+    line-height: 1.2; /*espaçamento das linhas*/
+}
+h3{
+    font-size: 5rem;
+}
+h4{
+    font-size: 4.5rem;
+    text-transform: uppercase;
+}
+h5{
+    font-size: 4rem;
+}
+h6{
+    font-size: 3.6rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+p{
+    margin-bottom: 2.5rem; /*espaçamento entre os parágrafos*/
+}
+
+/*Classes gerais*/
+
+.main-bg{
+    background-image: url(../image/confetti-doodles.svg);
+    background-size: cover;
+    background-position: center;
+    color: var(--white-color);
+}
+
+.white-bg{
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+.main-content{
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 8rem var(--gap);/*espaçamento padrão entre cada sessão*/
+}
+
+.section{
+    min-height: 100vh;
+}
+
+/*Classes menu*/
+.menu{
+    
+    position: fixed; /*pra rolar com a tela*/
+    z-index: 1;
+    top:0;/*garantir que nenhum texto ficará do lado do conteúdo*/
+    left: 0;/*garantir que nenhum texto ficará do lado do conteúdo*/
+    right: 0;/*garantir que nenhum texto ficará do lado do conteúdo*/
+    width: 100%;
+    border-bottom: 0.1rem solid var(--ligth-line-color);
+
+}
+
+.menu-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.menu h1{
+    font-size: 2.3rem;
+    color:var(--primary-color);
+}
+
+.menu h1 a {
+
+    color:inherit;
+    
+}
+
+.menu ul{
+    list-style: none;
+    display:flex;
+}
+
+.menu ul li a {
+
+    display:block;
+    padding: 2rem;
+    font-size: 1.8rem;
+    color:var(--primary-color);
+    position:relative;
+        
+}
+.menu ul li a::after { /*aquela linha que fica embaixo dos links*/
+
+    content: '';
+    position:absolute;
+    bottom: 1rem;
+    left: 20%;
+    width:0;
+    height:0.2rem;
+    background:var(--secundary-color);
+    transition: all 300ms ease-in-out;
+}
+
+.menu ul li a:hover::after{
+    left: 20%;
+    width:80%;
+}
+
+.menu-spacing{ /*Criado somente para ter espaço entre o menu e o próximo conteúdo*/
+    height: 6.5rem;
+}
+
+/*Classes intro*/
+
+.intro-content{
+    position:relative;
+    /*top:-6rem;*/
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /*Definindo a quantidade de colunas e o tamanho delas*/
+    gap: var(--gap);
+    min-height: 100vh;
+}
+
+.intro-text, .intro-img{
+display: flex;
+flex-flow: column wrap;
+justify-content: center;
+}
+
+
+.intro-img img{
+max-width: 100%;
+height: auto;
+}
+
+/*Classes TOP 3*/
+
+.top3-content{
+    max-width: 64rem;
+    min-height: 100vh;
+    display: flex;
+   /* flex-flow: column wrap;*/
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+/*Classes TOP 3 Detalhes and Work*/
+
+.grid-one-content{
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+.grid-one-h2{
+    margin-bottom: 2rem;
+}
+.grid-one-content-p{
+    padding-bottom: 6rem;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:var(--gap);
+    counter-reset:grid-counter; /*Foi criado um contador*/
+}
+
+.grid h3{
+    font-size: 3rem;
+    position:relative;
+    padding-left: 5rem;
+    padding-bottom: 3rem;
+}
+.grid h3::before{
+    counter-increment: grid-counter; /* Incrementa o contador*/
+    content: counter(grid-counter); /*Adiciona ele na página*/
+    position: absolute;
+    font-size: 8rem;
+    font-style: italic;
+    top:-3rem;
+    left:-1rem;
+    transform:rotate(5deg);
+
+}
+
+.grid-two-h2{
+    padding-bottom: 6rem;
+}
+
+/*Classes Gallery*/
+
+.gallery-img{
+    width: 100%;
+    max-width: 36rem;
+    max-height: 36rem;
+    overflow: hidden;
+}
+
+.gallery-img img{
+    transition: all 300ms ease-in-out;
+}
+
+.gallery-img img:hover{
+    transform:translate(-3%,3%) scale (1.2) rotate(5deg);
+}
+
+/*classes tabelas*/
+
+.responsive-table{
+    overflow:hidden;
+    overflow-x:auto;
+}
+
+.pricing{
+    text-align: center;
+}
+table{
+    min-width: 50rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+table caption{
+    font-style: italic;
+    font-size: 1.6rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+table td, table th{
+    white-space: nowrap;/*para não quebrar linha*/
+    text-align: left;
+    padding: 1rem;
+    border: 0.1rem solid var(--ligth-line-color);
+}
+tfoot td{
+background-color: var(--ligth-line-color);
+
+}
+table th{
+    text-align: left;
+    background-color: var(--ligth-line-color); 
+}
+
+.contact-form{
+    grid-column: span 2;
+}
+.contact-form .form-grid{
+    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--gap);
+
+}
+.form-grid legend{
+font-style: italic;
+font-size: 1.6rem;
+margin-bottom: 1.6rem;
+}
+.form-group{
+    
+    flex-grow: 1 1 32rem;
+}
+.form-group label{
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.form-group input, .form-group textarea{
+    border:none;
+    background: var(--white-color);
+    padding: 1.2rem 2rem;
+    width:100%;
+    font-size: 2rem;
+
+}
+body .full-width{
+   
+    width: 100%;
+    flex: 1 1 100%;
+}
+
+.form-group button{
+    border: 0.5rem solid var(--white-color);
+    background: none;
+    color:var(--white-color);
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+.form-group button:hover{
+    background: var(--white-color);
+    color: var(--primary-color);
+}
+.form-group ::placeholder{
+    color:lightgray;
+    
+}
+
+.form-group input:focus, .form-group textarea:focus{
+    box-shadow: 0 0 1rem 0.2rem var(--secundary-color);
+
+}
+
+.footer{
+    text-align: center;
+    font-size: 1.5rem;
+    color:purple;
+    
+}
+.footer p{
+    margin:0;
+    padding: 3rem;
+}
+
+.close-menu{ /*Para não aparecer o icone do checkbox*/
+    display: none;
+    position:fixed;
+    z-index: 2;
+    top:0;
+    left:0;
+}
+
+.back-to-top{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--white-color);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: var(--primary-color);
+    transform: rotate(-90deg);
+    border: 0.1rem solid var(--primary-color);
+}
+@media(max-width:800px){
+    .intro-content, .grid{
+        grid-template-columns: 1fr;
+    }
+    .gallery-img{
+        width:100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .form-group{
+        width: 100%;
+    }
+
+    .menu{
+        bottom: 0;
+    }
+    .menu-content, .menu-content ul{
+    flex-direction: column;
+    justify-content: center;
+    }
+
+    .menu-content{
+        height: 100vh;
+    }
+    .menu{
+        display: none;
+    }
+    
+    .close-menu-label::after{
+        content: '☰';
+        
+        position:fixed;
+        z-index: 2;
+        top:2rem;
+        right:2rem;
+        background: var(--primary-color);
+        color: var(--white-color);
+        font-size: 3rem;
+        line-height: 3rem;
+        width:3rem;
+        height: 3rem;
+        text-align: center;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+
+    .close-menu:checked~.menu{
+        display: block;
+    }
+    .close-menu:checked~.close-menu-label::after{
+        display: block;
+        content: 'x';
+
+    }
+    .menu-spacing{ /*Criado somente para ter espaço entre o menu e o próximo conteúdo*/
+        display: none;
+    }
+
+    
+}
